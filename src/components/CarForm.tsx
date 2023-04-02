@@ -43,9 +43,9 @@ export default function CarForm(){
                     {/* <label htmlFor="fuelType">Fuel Type</label> */}
                     <select  id="category" className="category py-2 px-4 mt-2 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400">
                         <option value="" className="font-slate-300">Fuel Type</option>
-                        <option value="petrol">Petrol</option>
                         <option value="diesel">Diesel</option>
-                        {/* <option value="super">Super</option> */}
+                        <option value="petrol">Petrol</option>
+                        <option value="gas">Gas</option>
                     </select>
                 </div>
 
@@ -62,8 +62,8 @@ export default function CarForm(){
                     <option value="">Availability</option>
                     <option value="1">One Item</option>
                     <option value="2">In Stock</option>
-                </select>
-                <textarea name="description" id="desc" cols={30} rows={5} className="form-input py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 resize-none" placeholder="Write description here ..."></textarea> */}
+    </select> */}
+                <textarea name="description" id="desc" cols={30} rows={5} className="form-input py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 resize-none" placeholder="Write description here ..."></textarea> 
             </div>
         </div>
         <div className="w-full flex flex-row flex-wrap justify-start md:justify-end text-slate-800 font-medium gap-4 py-4">

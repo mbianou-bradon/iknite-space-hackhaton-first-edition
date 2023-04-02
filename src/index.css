@@ -3,7 +3,20 @@
 @tailwind utilities;
 
 
-body {
+.btn {
+  @apply w-fit rounded-[1.875rem] text-sm font-semibold cursor-pointer px-8 py-3
+
+}
+
+.inputStyle {
+  @apply px-4 py-1 text-xs bg-gray-100 mb-4 h-12 flex flex-col justify-center
+}
+
+.inputField {
+  @apply border-0 focus:border-0 focus:outline-none focus:ring-0 bg-transparent
+}
+
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -15,4 +28,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
