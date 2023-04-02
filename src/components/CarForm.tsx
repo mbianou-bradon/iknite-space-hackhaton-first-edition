@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ImageIcon } from "../assets/icons/icons";
+import storage from "../firebaseConfig.js";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default function CarForm() {
   const [name, setName] = useState("");
@@ -10,6 +12,8 @@ export default function CarForm() {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [error, setError] = useState(null);
+
+  const [percent, setPercent] = useState(0);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -45,11 +49,34 @@ export default function CarForm() {
 
   const handleChangeFile = (event: any) => {
     setImage(event.target.files[0]);
-    
-    // const file = document.getElementById("photos").files; 
-    // const formData = new FormData(); 
-    // formData.append("img", file[0])
 
+    // const file = document.getElementById("photos").files;
+    // const formData = new FormData();
+    // formData.append("img", file[0])
+  };
+
+  function handleUpload() {
+    if (!image) {
+      alert("Please choose a file first!");
+    }
+    const storageRef = ref(storage, `/files/${image}`);
+    const uploadTask = uploadBytesResumable(storageRef, image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        ); // update progress
+        setPercent(percent);
+      },
+      (err) => console.log(err),
+      () => {
+        // download url
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log(url);
+        });
+      }
+    );
   }
 
   return (
@@ -79,7 +106,7 @@ export default function CarForm() {
                 setImage(URL.createObjectURL(file));
                 }
                 */
-            }
+              }
             />
             <span className="text-2xl block p-4 rounded-full bg-slate-200 text-emerald-800">
               <ImageIcon />

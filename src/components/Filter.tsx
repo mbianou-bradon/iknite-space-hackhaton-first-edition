@@ -3,8 +3,10 @@ import { BsSearch } from "react-icons/bs"
 export default function Filter(){
 
     return(
+
         <div className="sm:h-[50vh] px-10 sm:px-20 mb-[6.25rem]">
             <div className="bg-orange-secondary w-full h-full flex flex-col justify-around px-8 py-4">
+
                 <div className="flex items-center justify-between flex-wrap gap-y-5">
                     <div className="filterContainer">
                         <label htmlFor="cars" className="filterLabel">CARS</label>

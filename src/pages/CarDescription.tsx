@@ -2,8 +2,10 @@ import { GrLocation } from "react-icons/gr"
 import { BiChevronDown, BiChevronUp, BiChevronLeft } from "react-icons/bi"
 import { AiOutlineEye } from "react-icons/ai"
 import React from "react"
+
 import { Link, useParams } from "react-router-dom"
 import { Props } from "../dataTypes"
+
 
 export default function CarDescription(){
     const [car, setCar] = React.useState<Props>({
@@ -16,6 +18,10 @@ export default function CarDescription(){
         mileage: "",
         price: ""
     })
+    const [isMakingOffer, setIsMakingOffer] = React.useState<boolean>(false)
+    const [isAuth, setIsAuth] = React.useState<boolean>(false)
+
+
     const [isMakingOffer, setIsMakingOffer] = React.useState<boolean>(false)
     const [isAuth, setIsAuth] = React.useState<boolean>(false)
 
@@ -44,6 +50,7 @@ export default function CarDescription(){
 
         fetchCar()
     }, [])
+
 
     return(
         <div className="px-20">
@@ -144,7 +151,9 @@ export default function CarDescription(){
                     <div className="">
                         <div className="h-[44rem] p-8 bg-green-primary">
                             <div className="my-8">
+
                                 <h2 className="text-3xl font-bold text-orange-primary">FCFA <span>{car.price}</span></h2>
+
                                 <div className="my-5">
                                     <div className="flex items-center justify-between font-semibold mb-3">
                                         <h2>Convey Currency</h2>
@@ -171,10 +180,12 @@ export default function CarDescription(){
                                     <>
                                         <div className="inputStyle">
                                             <input type="text" name="buyerName" id="buyerName" placeholder="Name" className="inputField"/>
+
                                         </div>
                                         <div className="inputStyle">
                                             <input type="email" name="buyerEmail" id="buyerEmail" placeholder="Email" className="inputField"/>
                                         </div>
+
                                         <section className="flex items-center gap-2 px-4 py-1 text-xs bg-gray-100 mb-4 h-12">
                                             <h2>Flags</h2>
                                             <div className="flex flex-col">
