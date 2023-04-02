@@ -1,6 +1,14 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom"
+
 
 export default function UpperNavbar() {
+
+  const [isAuth, setIsAuth] = React.useState<boolean>(false)
+
+
+
+
   return (
     <div className="">
       <header>
@@ -49,26 +57,26 @@ export default function UpperNavbar() {
               font-semibold text-green-800"
           >
             <li>
-              <a className="md:p-4 py-2 block" href="#"
-                >Home</a>
+              <NavLink className={({isActive})=> isActive? "border border-green-800 text-green-800 p-4 py-2": "text-green-800 font-semibold p-4 py-2"} to="/"
+                >Home</NavLink>
             </li>
             <li>
-              <a className="md:p-4 py-2 block" href="#"
-                >Cars</a>
+              <NavLink className={({isActive})=> isActive? "border border-green-800 text-green-800 p-4 py-2": "text-green-800 font-semibold p-4 py-2"} to="/cars"
+                >Cars</NavLink>
             </li>
             <li>
-              <a className="md:p-4 py-2 block" href="#"
-                >Contact</a>
+              <NavLink className={({isActive})=> isActive? "border border-green-800 text-green-800 p-4 py-2": "text-green-800 font-semibold p-4 py-2"} to="/contact"
+                >Contact</NavLink>
             </li>
           </ul>
 
         </div>
           <div>
             <div>
-              <a
+              <Link
                 className="text-white block btn bg-green-800"
-                href="#"
-                >SELL</a>
+                to={isAuth? "/addcar" : "/signup"}
+                >SELL</Link>
             </div>
           </div>
   

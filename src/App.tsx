@@ -8,6 +8,8 @@ import CarDescription from './pages/CarDescription';
 import CarForm from './components/CarForm';
 import Cars from './pages/Cars';
 import Error from './Error';
+import SignUp from './pages/SignUp';
+import SignUpAndSignIn from './pages/SignUp';
 
 
 const MyApp = ():JSX.Element => {
@@ -29,7 +31,8 @@ const router = createBrowserRouter(
       {path: "/", element: <Home/> },
       { path: "/cars", element: <Cars /> },
       { path: "/cars/:carId", element: <CarDescription/>},
-      { path: "/cars/addcar", element:<CarForm/>}
+      { path: "/addcar", element:<CarForm/>},
+      { path: "/signup", element: <SignUpAndSignIn />}
     ]
     }
   ]
