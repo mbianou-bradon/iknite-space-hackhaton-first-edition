@@ -2,9 +2,25 @@ import { GrLocation } from "react-icons/gr"
 import { BiChevronDown, BiChevronUp, BiChevronLeft } from "react-icons/bi"
 import { AiOutlineEye } from "react-icons/ai"
 import React from "react"
-import { Link } from "react-router-dom"
+
+import { Link, useParams } from "react-router-dom"
+import { Props } from "../dataTypes"
+
 
 export default function CarDescription(){
+    const [car, setCar] = React.useState<Props>({
+        _id: "",
+        name: "",
+        model: "",
+        img:"",
+        engineType: "",
+        fuelType: "",
+        mileage: "",
+        price: ""
+    })
+    const [isMakingOffer, setIsMakingOffer] = React.useState<boolean>(false)
+    const [isAuth, setIsAuth] = React.useState<boolean>(false)
+
 
     const [isMakingOffer, setIsMakingOffer] = React.useState<boolean>(false)
     const [isAuth, setIsAuth] = React.useState<boolean>(false)
@@ -16,25 +32,47 @@ export default function CarDescription(){
         setIsMakingOffer(false)
     }
 
+    const carId = useParams()["carId"]
+
+    console.log(carId)
+
+    React.useEffect(()=>{
+        const fetchCar = async () => {
+            const url = "/api/cars/" + carId
+            const response = await fetch(url)
+            const json = await response.json()
+
+            if(response.ok){
+                setCar(json)
+                console.log(json)
+            }
+        }
+
+        fetchCar()
+    }, [])
+
+
     return(
         <div className="px-20">
             <div>
                 <header className="mt-2 mb-[6.25rem]">
                     <div className="flex items-center gap-4">
-                        <div className="w-fit flex items-center justify-center border border-slate-950 pl-2 pr-4 py-1">
-                            <div className="text-2xl">
-                                <BiChevronLeft/>
+                        <Link to="/cars">
+                            <div className="w-fit flex items-center justify-center border border-slate-950 pl-2 pr-4 py-1 hover:bg-slate-950 hover:text-white cursor-pointer">
+                                <div className="text-2xl">
+                                    <BiChevronLeft/>
+                                </div>
+                                <h2 className="text-sm">Return Back</h2>
                             </div>
-                            <h2 className="text-sm">Return Back</h2>
-                        </div>
+                        </Link>
 
                         <div className="font-serif">
-                            <h2>Home/Car/CarName</h2>
+                            <h2>Home/Cars/<span>{car.name}</span></h2>
                         </div>
                     </div>
 
                     <div className="my-5">
-                        <h2 className="text-4xl font-semibold mb-2">CarName</h2>
+                        <h2 className="text-4xl font-semibold mb-2">{car.name}</h2>
                         <div className="flex items-center gap-1">
                             {/* Location Icon */}
                             <div className="text-orange-primary">
@@ -78,20 +116,20 @@ export default function CarDescription(){
 
                             <div>
                                 <div>
-                                <p className="text-slate-500 font-semibold my-5">About: <span className="text-2xl font-semibold text-slate-900">CarName</span></p>
+                                <p className="text-slate-500 font-semibold my-5">About: <span className="text-2xl font-semibold text-slate-900">{car.name}</span></p>
                                 </div>
                                 <div className="[&>*]:mb-3 [&>*]:grid [&>*]:grid-cols-3 [&>*>p]:text-slate-500 [&>*>h2]:text-slate-500 [&>*>h2]:font-semibold">
                                     <div>
-                                        <p>Engine Type:</p> <h2>3,0L</h2>
+                                        <p>Engine Type:</p> <h2>{car.engineType}</h2>
                                     </div>
                                     <div>
-                                        <p>Model: </p> <h2>2015</h2>
+                                        <p>Model: </p> <h2>{car.model}</h2>
                                     </div>
                                     <div>
-                                        <p>Fuel Type: </p> <h2>Petrol</h2>
+                                        <p>Fuel Type: </p> <h2>{car.fuelType}</h2>
                                     </div>
                                     <div>
-                                        <p>Mileage: </p> <h2>104,000</h2>
+                                        <p>Mileage: </p> <h2>{car.mileage}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +151,9 @@ export default function CarDescription(){
                     <div className="">
                         <div className="h-[44rem] p-8 bg-green-primary">
                             <div className="my-8">
-                                <h2 className="text-3xl font-bold text-orange-primary">FCFA <span>500,000</span></h2>
+
+                                <h2 className="text-3xl font-bold text-orange-primary">FCFA <span>{car.price}</span></h2>
+
                                 <div className="my-5">
                                     <div className="flex items-center justify-between font-semibold mb-3">
                                         <h2>Convey Currency</h2>
@@ -140,10 +180,12 @@ export default function CarDescription(){
                                     <>
                                         <div className="inputStyle">
                                             <input type="text" name="buyerName" id="buyerName" placeholder="Name" className="inputField"/>
+
                                         </div>
                                         <div className="inputStyle">
                                             <input type="email" name="buyerEmail" id="buyerEmail" placeholder="Email" className="inputField"/>
                                         </div>
+
                                         <section className="flex items-center gap-2 px-4 py-1 text-xs bg-gray-100 mb-4 h-12">
                                             <h2>Flags</h2>
                                             <div className="flex flex-col">

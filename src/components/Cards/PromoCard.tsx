@@ -10,7 +10,7 @@ interface Props {
 export default function PromoCard(prop: Props){
 
     return (
-        <div className="relative h-[15.625rem] w-[17.2rem] mb-[6.25rem] bg-white border-2 cursor-pointer hover:shadow-md">
+        <div className="relative h-[15.625rem] w-[17.2rem] bg-white border-2 cursor-pointer hover:shadow-md">
             <div className="w-full h-[11rem] bg-[#D9D9D9]">
                 <img src={prop.img} alt="" className="h-full w-full object-cover object-center"/>
             </div>
