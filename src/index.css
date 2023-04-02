@@ -4,7 +4,7 @@
 
 
 .btn {
-  @apply w-fit rounded-[1.875rem] text-sm font-semibold cursor-pointer px-8 py-3
+  @apply  rounded-[1.875rem] text-sm font-semibold cursor-pointer px-8 py-3
 
 }
 
