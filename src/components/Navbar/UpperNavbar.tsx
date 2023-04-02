@@ -20,7 +20,7 @@ export default function UpperNavbar() {
           w-full
           py-4
           md:py-0
-          text-lg text-gray-700
+          text-lg
         "
       >
        <div>
@@ -54,18 +54,18 @@ export default function UpperNavbar() {
               md:justify-between 
               md:pt-0
               gap-8
-              font-semibold text-green-800"
+              font-semibold text-green-primary"
           >
             <li>
-              <NavLink className={({isActive})=> isActive? "border border-green-800 text-green-800 p-4 py-2": "text-green-800 font-semibold p-4 py-2"} to="/"
+              <NavLink className={({isActive})=> isActive? "border border-green-primary text-green-primary p-4 py-2": "text-green-primary font-semibold p-4 py-2"} to="/"
                 >Home</NavLink>
             </li>
             <li>
-              <NavLink className={({isActive})=> isActive? "border border-green-800 text-green-800 p-4 py-2": "text-green-800 font-semibold p-4 py-2"} to="/cars"
+              <NavLink className={({isActive})=> isActive? "border border-green-primary text-green-primary p-4 py-2": "text-green-primary font-semibold p-4 py-2"} to="/cars"
                 >Cars</NavLink>
             </li>
             <li>
-              <NavLink className={({isActive})=> isActive? "border border-green-800 text-green-800 p-4 py-2": "text-green-800 font-semibold p-4 py-2"} to="/contact"
+              <NavLink className={({isActive})=> isActive? "border border-green-primary text-green-primary p-4 py-2": "text-green-primary font-semibold p-4 py-2"} to="/contact"
                 >Contact</NavLink>
             </li>
           </ul>

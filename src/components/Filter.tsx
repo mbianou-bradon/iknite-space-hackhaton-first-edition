@@ -4,7 +4,7 @@ export default function Filter(){
 
     return(
         <div className="h-[50vh] px-20 mb-[6.25rem]">
-            <div className="bg-orange-500 w-full h-full flex flex-col justify-around px-8">
+            <div className="bg-orange-secondary w-full h-full flex flex-col justify-around px-8">
                 <div className="flex items-center justify-between flex-wrap gap-y-5">
                     <div className="filterContainer">
                         <label htmlFor="cars" className="filterLabel">CARS</label>
@@ -60,14 +60,14 @@ export default function Filter(){
 
                     </div>
 
-                    <div className="btn text-white flex items-center gap-1 bg-green-800">
+                    <div className="btn text-white flex items-center gap-1 bg-green-primary">
                         <div>
                             <BsSearch />
                         </div>
                         <h2>Search</h2>
                     </div>
 
-                    <div className="btn border hover:bg-orange-600">
+                    <div className="btn border hover:bg-orange-primary text-white">
                         <h2>Sell your Car</h2>
                     </div>
                 </div>
