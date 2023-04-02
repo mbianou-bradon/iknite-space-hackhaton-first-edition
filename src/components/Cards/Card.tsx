@@ -15,7 +15,8 @@ export default function Card(prop:Props) {
           <div className="h-[14rem] w-full bg-rose-600">
             <img src={prop.img} className="h-full w-full object-cover object-center"/>
           </div>
-          <div className="cardBody flex flex-col h-[10rem] px-4 pt-6 pb-3">
+          <div className="cardBody flex flex-col h-[10rem] px-4 pt-3 pb-3">
+            <div className="text-orange-500 mb-3 font-bold text-sm"><h2>NEGOTIABLE</h2></div>
             <div className="cardName text-2xl font-semibold">
               <h2>Name</h2>
             </div>
