@@ -1,11 +1,10 @@
 import React from 'react'
-import 'iconify-icon';
+import { BsFacebook } from  "react-icons/bs"
 
 export default function Footer() {
   return (
-    <div>
-         <body className="bg-[#3a4d7c] flex justify-center items-center min-h-screen">
-    <div className="bg-[#1e3161] space-y-6 text-white mx-auto rounded-xl shadow-md w-full max-w-6xl p-5 sm:px-10 [&_*]:transition [&_*]:ease-linear [&_*]:duration-200">
+
+    <div className="bg-[#1e3161] w-full space-y-6 text-white rounded-t-xl shadow-md p-5 sm:px-10 [&_*]:transition [&_*]:ease-linear [&_*]:duration-200">
     <div>
         <div
             className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 [&>*>h1]:text-2xl [&>*>h1]:font-semibold [&>*>h1]:my-5 [&>*>h1]:px-4">
@@ -46,7 +45,7 @@ export default function Footer() {
                 <div
                     className="flex items-center gap-8 px-4 sm:px-10 text-2xl mb-4 font-semibold [&>*]:cursor-pointer [&>*:hover]:text-blue-400">
                     <div>
-                        {/* <iconify-icon icon="lucide:facebook"></iconify-icon> */}
+                        <BsFacebook />
                     </div>
     
                     <div>
@@ -69,11 +68,6 @@ export default function Footer() {
                 </ul>
             </div>
         </div>
-    </div>
-    
-    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
-</body>
-
     </div>
   )
 }
