@@ -1,5 +1,8 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import { BsFacebook, BsInstagram, BsMessenger, BsYoutube } from  "react-icons/bs"
+import logo_white from "../assets/images/Logo_white.png"
+
 
 export default function Footer() {
   return (
@@ -27,14 +30,14 @@ export default function Footer() {
 
             <div className="flex md:justify-between md:mx-10 md:mt-32 md:items-center justify-start md:flex-row flex-col mb-10">
                 <div className="text-xl font-bold p-0 m-0">
-                    <h2>IMOTORS</h2>
+                    <h2><img src={logo_white} className="h-5"/></h2>
                 </div>
 
                 <div>
-                    <ul className="md:inline-flex gap-5 flex md:my-0 my-10">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Cars</a></li>
-                        <li><a href="#">Contact</a></li>
+                    <ul className="md:inline-flex gap-5 flex md:my-0 my-10 font-semibold">
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/cars">Cars</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
                     </ul>
                 </div>
 

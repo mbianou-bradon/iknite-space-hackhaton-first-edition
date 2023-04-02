@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom"
-
+import logo_green from "../../assets/images/Logo_green.png"
 
 export default function UpperNavbar() {
 
@@ -25,7 +25,7 @@ export default function UpperNavbar() {
       >
        <div>
           <a href="#">
-            IMOTOR
+            <img src={logo_green} alt="" className="h-5"/>
           </a>
         </div>
        
