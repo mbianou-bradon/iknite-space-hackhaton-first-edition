@@ -1,4 +1,5 @@
 {
+ "proxy": "https://iknite-motors.onrender.com" ,
   "name": "iknite-space-hackhaton-first-edition",
   "version": "0.1.0",
   "private": true,
