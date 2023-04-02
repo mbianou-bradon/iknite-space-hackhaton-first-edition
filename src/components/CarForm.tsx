@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ImageIcon } from "../assets/icons/icons";
 import storage from "../firebaseConfig.js";
-import { ref, uploadBytesResumable } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default function CarForm() {
   const [name, setName] = useState("");
