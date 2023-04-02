@@ -1,9 +1,20 @@
 import { GrLocation } from "react-icons/gr"
 import { BiChevronDown, BiChevronUp, BiChevronLeft } from "react-icons/bi"
 import { AiOutlineEye } from "react-icons/ai"
+import React from "react"
+import { Link } from "react-router-dom"
 
 export default function CarDescription(){
 
+    const [isMakingOffer, setIsMakingOffer] = React.useState<boolean>(false)
+    const [isAuth, setIsAuth] = React.useState<boolean>(false)
+
+    const openIsMakingOffer = () =>{
+        setIsMakingOffer(true)
+    }
+    const closeIsMakingOffer = () => {
+        setIsMakingOffer(false)
+    }
 
     return(
         <div className="px-20">
@@ -26,7 +37,7 @@ export default function CarDescription(){
                         <h2 className="text-4xl font-semibold mb-2">CarName</h2>
                         <div className="flex items-center gap-1">
                             {/* Location Icon */}
-                            <div>
+                            <div className="text-orange-primary">
                                 <GrLocation />
                             </div>
                             <h2>Douala</h2>
@@ -99,10 +110,10 @@ export default function CarDescription(){
                     </div>
                     
                     {/* Side Bar */}
-                    <div className="p-8">
-                        <div className="h-[48rem]">
+                    <div className="">
+                        <div className="h-[44rem] p-8 bg-green-primary">
                             <div className="my-8">
-                                <h2 className="text-3xl font-bold">FCFA <span>500,000</span></h2>
+                                <h2 className="text-3xl font-bold text-orange-primary">FCFA <span>500,000</span></h2>
                                 <div className="my-5">
                                     <div className="flex items-center justify-between font-semibold mb-3">
                                         <h2>Convey Currency</h2>
@@ -114,46 +125,51 @@ export default function CarDescription(){
                                 </div>
                             </div>
 
-                            <div className="w-[20rem] px-10 bg-slate-50 py-5">
-                                <h2 className="text-xl font-semibold mb-2">Make an offer</h2>
+                            <div className="w-[20rem] px-10 bg-orange-secondary-light py-5">
+                                <h2 className="text-xl font-semibold mb-2 text-blue-primary">Make an offer</h2>
                                 <form action="" className="">
                                     <div className="inputStyle">
                                         <label htmlFor="price">Price</label>
                                         <div className="flex items-center gap-0.5">
                                             <h2 className="text-sm">XAF</h2>
-                                            <input type="number" className="inputField"/>
+                                            <input type="number" className="inputField text-orange-primary font-semibold" onClick={openIsMakingOffer}/>
                                         </div>
                                     </div>
-                                    <div className="inputStyle">
-                                        <input type="text" name="buyerName" id="buyerName" placeholder="Name" className="inputField"/>
-                                    </div>
-                                    <div className="inputStyle">
-                                        <input type="email" name="buyerEmail" id="buyerEmail" placeholder="Email" className="inputField"/>
-                                    </div>
-                                    <section className="flex items-center gap-2 px-4 py-1 text-xs bg-gray-100 mb-4 h-12">
-                                        <h2>Flags</h2>
-                                        <div className="flex flex-col">
-                                            <label htmlFor="buyerPhoneNumber">Telephone</label>
-                                            <input type="number" name="buyerPhoneNumber" id="buyerPhoneNumber" placeholder="+237 6 71 23 45 19" className="h-full bg-transparent inputField"/>
+                                    {
+                                        isMakingOffer &&
+                                    <>
+                                        <div className="inputStyle">
+                                            <input type="text" name="buyerName" id="buyerName" placeholder="Name" className="inputField"/>
                                         </div>
-                                    </section>
+                                        <div className="inputStyle">
+                                            <input type="email" name="buyerEmail" id="buyerEmail" placeholder="Email" className="inputField"/>
+                                        </div>
+                                        <section className="flex items-center gap-2 px-4 py-1 text-xs bg-gray-100 mb-4 h-12">
+                                            <h2>Flags</h2>
+                                            <div className="flex flex-col">
+                                                <label htmlFor="buyerPhoneNumber">Telephone</label>
+                                                <input type="number" name="buyerPhoneNumber" id="buyerPhoneNumber" placeholder="+237 6 71 23 45 19" className="h-full bg-transparent inputField"/>
+                                            </div>
+                                        </section>
 
-                                    <section className="[&>*]:bg-[#D9D9D9] flex gap-4">
-                                        <button className="btn">Cancel</button>
-                                        <button type="submit" className="btn">Send</button>
-                                    </section>
+                                        <section className="flex gap-4">
+                                            <button className="btn bg-[#CFD3DC] text-gray-secondary" onClick={closeIsMakingOffer}>Cancel</button>
+                                            <button type="submit" className="btn bg-blue-primary text-white">Send</button>
+                                        </section>
+                                    </>
+                                   }
                                 </form>
                             </div>
                         </div>
 
-                        <div className="px-6 py-8 bg-gray-300 mt-10">
+                        <div className="px-6 py-8 bg-blulish-secondary my-[6.25rem] text-gray-secondary">
                             <div>
                                 <h2 className="text-sm">Need to sell your car too?</h2>
                                 <h2 className="text-2xl font-semibold mt-4 mb-8">We will help you!</h2>
                                 <div className="flex items-center justify-end">
-                                    <div>
-                                        <button className="btn bg-[#F5F5F5]">Sell your car</button>
-                                    </div>
+                                    <Link to={isAuth? "/addcar" : "/signup"}>
+                                        <button className="btn bg-gray-secondary text-blulish-secondary">Sell your car</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

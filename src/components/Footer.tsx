@@ -4,7 +4,7 @@ import { BsFacebook, BsInstagram, BsMessenger, BsYoutube } from  "react-icons/bs
 export default function Footer() {
   return (
     <footer id="contact" className="sm:px-4">
-        <div className="bg-[#0b120b] text-white px-4 md:px-28 pt-28 p-1">
+        <div className="bg-green-secondary text-white px-4 md:px-28 pt-28 p-1">
             <div className="grid grid-cols-1 md:grid-cols-2 mb-12 md:mb-20 gap-10 md:gap-y-52">
                 <div className="w-30 h-auto">
                     <h1 className="md:text-7xl text-5xl font-extrabold pb-5 leading-snug">Get in Contact with Us</h1>
@@ -16,7 +16,7 @@ export default function Footer() {
 
                         <input type="email" id="email" placeholder="Your business email" className="border-0 md:px-5 px-auto italic focus:outline-none text-orange-400 min-w-0"/>
 
-                        <div className="bg-[#fd661f] shadow-md ml-4 md:pl-4 md:pr-2 flex justify-center items-center">
+                        <div className="bg-orange-primary shadow-md ml-4 md:pl-4 md:pr-2 flex justify-center items-center">
                             <h3 className="md:py-3 hidden md:block">Get started</h3>
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" className="text-4xl md:hidden lg:block" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"/></svg>
