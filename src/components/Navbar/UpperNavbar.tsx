@@ -41,12 +41,12 @@ export default function UpperNavbar() {
           <ul
             className="
               pt-4
-              text-base text-gray-700
+              text-base
               md:flex
               md:justify-between 
               md:pt-0
               gap-8
-              font-semibold [&>*:hover]:text-green-800"
+              font-semibold text-green-800"
           >
             <li>
               <a className="md:p-4 py-2 block" href="#"

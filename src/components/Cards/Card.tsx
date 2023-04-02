@@ -10,7 +10,7 @@ interface Props{
 
 export default function Card(prop:Props) {
   return (
-    <div className="h-[24rem] w-[17rem] bg-slate-50 cursor-pointer hover:shadow-md">
+    <div className="h-[24rem] w-[17rem] bg-white cursor-pointer hover:shadow-md">
       <div>
           <div className="h-[14rem] w-full bg-rose-600">
             <img src={prop.img} className="h-full w-full object-cover object-center"/>
