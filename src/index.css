@@ -16,6 +16,14 @@
   @apply border-0 focus:border-0 focus:outline-none focus:ring-0 bg-transparent
 }
 
+.filterContainer{
+  @apply bg-white rounded p-4 w-fit text-sm
+}
+
+.filterLabel{
+  @apply inline-block mr-3 px-5 py-1 border text-slate-500
+}
+
 /* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

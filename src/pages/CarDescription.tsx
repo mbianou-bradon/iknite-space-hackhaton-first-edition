@@ -8,7 +8,7 @@ export default function CarDescription(){
     return(
         <div className="px-20">
             <div>
-                <header className="mt-2 mb-20">
+                <header className="mt-2 mb-[6.25rem]">
                     <div className="flex items-center gap-4">
                         <div className="w-fit flex items-center justify-center border border-slate-950 pl-2 pr-4 py-1">
                             <div className="text-2xl">
@@ -57,7 +57,7 @@ export default function CarDescription(){
                         </div>
 
                         {/* Car Details: Engine Type, Fuel Type, Model Mileage */}
-                        <div className="bg-slate-50 py-5 px-8 my-[7rem]">
+                        <div className="bg-slate-50 py-5 px-8 my-[6.25rem]">
                             <div className="flex items-center gap-1 text-xs my-4 mb-5 text-slate-500">
                                 <div className="text-lg ">
                                     <AiOutlineEye />
@@ -87,7 +87,7 @@ export default function CarDescription(){
                         </div>
 
                         {/* Seller Entra Comments */}
-                        <div className="bg-slate-50 py-5 px-8 mb-20">
+                        <div className="bg-slate-50 py-5 px-8 mb-[6.25rem]">
                             <div className="flex items-center gap-1 mb-5 text-2xl font-semibold">
             
                                 <h2>Seller Comment</h2>
