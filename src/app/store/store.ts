@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { carSlice } from '../features/carSlice';
+// import { carSlice } from '../features/carSlice';
 
 
 export const store = configureStore({
   reducer: {
-    carReducer: carSlice.reducer
+    // carReducer: carSlice.reducer
   },
 });
 

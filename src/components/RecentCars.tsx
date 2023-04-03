@@ -13,6 +13,8 @@ export default function RecentCars(){
     
           if (response.ok) {
             setCars(json)
+          } else {
+            console.log("can't connect to api")
           }
         };
     

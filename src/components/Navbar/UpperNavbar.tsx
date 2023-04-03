@@ -71,12 +71,18 @@ export default function UpperNavbar() {
           </ul>
 
         </div>
-          <div>
+          <div className="flex items-center gap-2">
             <div>
               <Link
                 className="text-white block btn bg-green-800"
                 to={isAuth? "/addcar" : "/signup"}
                 >SELL</Link>
+            </div>
+
+            <div className="btn border hover:bg-orange-primary hover:text-white border-orange-primary">
+              <Link to="/signup">
+                Sign In
+              </Link>
             </div>
           </div>
   
