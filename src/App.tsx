@@ -1,5 +1,5 @@
 import './App.css';
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, Outlet, RouterProvider, Routes, Route } from "react-router-dom"
 import Footer from './components/Footer';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
@@ -30,7 +30,7 @@ const router = createBrowserRouter(
     children: [
       {path: "/", element: <Home/> },
       { path: "/cars", element: <Cars /> },
-      { path: "/cars/:carId", element: <CarDescription/>},
+      { path: "/cars/:carId", element: <CarDescription />},
       { path: "/addcar", element:<CarForm/>},
       { path: "/signup", element: <SignUpAndSignIn />}
     ]
@@ -43,6 +43,13 @@ function App() {
   return (
     <div>
       <RouterProvider router={router} />
+      {/* <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/cars" element={<Cars/>} />
+        <Route path="/cars/:carId" element={<CarDescription />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home/>} />
+      </Routes> */}
     </div>
     
   );

@@ -13,7 +13,7 @@ export default function Card(prop:Props) {
 
   return (
     <div className="h-[24rem] w-[17rem] bg-white cursor-pointer hover:shadow-md">
-      <Link to={"/cars/" + carId}>
+      <Link to={"/cars/" + carId} state={prop}>
         <div>
             <div className="h-[14rem] w-full bg-gray-secondary">
               <img src={prop.img} className="h-full w-full object-cover object-center"/>
