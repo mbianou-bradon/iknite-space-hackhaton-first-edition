@@ -10,22 +10,28 @@ export default function CarForm() {
   const [fuelType, setFuelType] = useState("");
   const [mileage, setMileage] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage]: any = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 
   const [percent, setPercent] = useState(0);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    handleUpload();
+    // console.log(imageURL)
+    
+    const car = { name, model, engineType, fuelType, mileage, price, imageURL, description };
 
-    const car = { name, model, engineType, fuelType, mileage, price, image };
+    console.log(JSON.stringify(car))
 
     const response = await fetch("/api/cars", {
       method: "POST",
-      body: JSON.stringify(car),
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(car),      
     });
 
     const json = await response.json();
@@ -72,8 +78,8 @@ export default function CarForm() {
       (err) => console.log(err),
       () => {
         // download url
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {          
+          setImageURL(url);
         });
       }
     );
@@ -138,10 +144,10 @@ export default function CarForm() {
 
           <div className="price flex items-center bg-gray-300 rounded-md">
             <input
-              type="number"
+              type="text"
               id="price"
               className="price py-2 px-4 min-w-0 border w-full rounded-l-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-              placeholder="Price"
+              placeholder="Price e.g. 15.000.000"
               onChange={(e) => setPrice(e.target.value)}
             />
             <div className="bg-gray-300 h-full w-[15%] flex items-center justify-center font-bold text-slate-500 rounded-r-md">
@@ -151,10 +157,10 @@ export default function CarForm() {
 
           <div className="mileage flex items-center bg-gray-300 rounded-md">
             <input
-              type="number"
+              type="text"
               id="mileage"
               className="price py-2 px-4 min-w-0 border w-full rounded-l-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-              placeholder="Mileage"
+              placeholder="Mileage e.g. 15"
               onChange={(e) => setMileage(e.target.value)}
             />
             <div className="bg-gray-300 h-full w-[15%] flex items-center justify-center font-bold text-slate-500 rounded-r-md">
@@ -173,9 +179,11 @@ export default function CarForm() {
               <option value="" className="font-slate-300">
                 Fuel Type
               </option>
-              <option value="diesel">Diesel</option>
-              <option value="petrol">Petrol</option>
-              <option value="gas">Gas</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Gas">Gas</option>
+              <option value="Electric">Electric</option>
+              <option value="Hybrid">Hybrid</option>
             </select>
           </div>
 
@@ -204,7 +212,7 @@ export default function CarForm() {
             rows={5}
             className="form-input py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 resize-none"
             placeholder="Write description here ..."
-            onChange={(e) => setEngineType(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
           ></textarea>
         </div>
       </div>

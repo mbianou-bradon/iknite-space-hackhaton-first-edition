@@ -18,9 +18,6 @@ export default function CarDescription(){
         mileage: "",
         price: ""
     })
-    const [isMakingOffer, setIsMakingOffer] = React.useState<boolean>(false)
-    const [isAuth, setIsAuth] = React.useState<boolean>(false)
-
 
     const [isMakingOffer, setIsMakingOffer] = React.useState<boolean>(false)
     const [isAuth, setIsAuth] = React.useState<boolean>(false)
