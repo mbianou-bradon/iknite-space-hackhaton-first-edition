@@ -50,8 +50,11 @@ export default function CarForm() {
       setMileage("");
       setPrice("");
       setImage("");
+      setImageURL("");
+      setDescription("");
       setError(null);
       alert("New Car Added You will be redirected to Cars Page");
+      console.log("New Car Created", json)
       // dispatch({type: 'CREATE_CANDIDATE', payload: json })
       navigator("/cars")
     }
