@@ -2,9 +2,10 @@ export interface Props{
   _id: string,
   name: string,
   model: string,
-  img:string,
+  imageURL:string,
   engineType: string,
   fuelType: string,
   mileage: string,
-  price: string
+  price: string,
+  description: string
 }

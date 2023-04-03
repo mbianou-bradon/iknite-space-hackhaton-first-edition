@@ -16,7 +16,7 @@ export default function Card(prop:Props) {
       <Link to={"/cars/" + carId} state={prop}>
         <div>
             <div className="h-[14rem] w-full bg-gray-secondary">
-              <img src={prop.img} className="h-full w-full object-cover object-center"/>
+              <img src={prop.imageURL} className="h-full w-full object-cover object-center"/>
             </div>
             <div className="cardBody flex flex-col h-[10rem] px-4 pt-3 pb-3">
               <div className="text-orange-primary mb-3 font-bold text-sm"><h2>NEGOTIABLE</h2></div>

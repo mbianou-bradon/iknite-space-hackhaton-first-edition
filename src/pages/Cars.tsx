@@ -25,10 +25,10 @@ export default function Cars(){
 
 
     return(
-        <div className="px-4 sm:px-20 flex items-center flex-wrap gap-5 mb-[6.25rem]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[2rem] gap-y-[3.125rem] px-10 sm:px-20 mb-[6.25rem]">
             {
                 cars && cars.map((car:Props) =>(
-                    <Card key={car._id} name={car.name} _id={car._id} model={car.model} img={car.img} engineType={car.engineType} fuelType={car.fuelType} mileage={car.mileage} price={car.price} />
+                    <Card key={car._id} name={car.name} _id={car._id} model={car.model} imageURL={car.imageURL} engineType={car.engineType} fuelType={car.fuelType} mileage={car.mileage} price={car.price} description={car.description} />
                 ))
             }
         </div>

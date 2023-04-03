@@ -25,9 +25,9 @@ export default function RecentCars(){
         <div className="px-10 sm:px-20 mb-[6.25rem]">
             <h2 className="text-3xl font-bold my-5">Most recent cars for sale in Cameroon</h2>
 
-            <div className="flex items-center justify-between flex-wrap gap-y-[3.125rem]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[2rem] gap-y-[3.125rem]">
                 {cars && cars.map((car: any) => (
-                    <Card _id={car._id} img={car.imageURL} name={car.name} model={car.model} engineType={car.engineType} fuelType={car.fuelType} mileage={car.mileage} price={car.price}/>
+                    <Card _id={car._id} imageURL={car.imageURL} name={car.name} model={car.model} engineType={car.engineType} fuelType={car.fuelType} mileage={car.mileage} price={car.price} description={car.description}/>
                 ))}
                 
                 
