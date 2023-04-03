@@ -44,8 +44,8 @@ export default function SignUpAndSignIn() {
       setImportLicenseNumber("");
       setRole("");
       setError(null);
-      alert("New User Added You will be redirected to Add Car Page");
       console.log("New User Created", json)
+      alert("New User Added You will be redirected to Add Car Page");      
       // dispatch({type: 'CREATE_CANDIDATE', payload: json })
       navigator("/addcar")
     }
