@@ -31,24 +31,7 @@ export default function CarDescription(props: any) {
     setIsMakingOffer(false);
   };
 
-  //   const carId = useParams()["carId"];
-
-  //   console.log(carId);
-
-  //   React.useEffect(() => {
-  //     const fetchCar = async () => {
-  //       const url = "/api/cars/" + carId;
-  //       const response = await fetch(url);
-  //       const json = await response.json();
-
-  //       if (response.ok) {
-  //         setCar(json);
-  //         console.log(json);
-  //       }
-  //     };
-
-  //     fetchCar();
-  //   }, []);
+    let images = propsData.imageURL;
 
   const [bidderName, setBidderName] = React.useState("");
   const [bidPrice, setBidPrice] = React.useState("0")
@@ -100,7 +83,7 @@ const [tempBid, setTempBid] = React.useState("0")
             <div className="grid grid-cols-1 sm:grid-cols-4 w-fit gap-7">
               <div className="md:col-span-3 bg-slate-200 h-[20rem] sm:h-[28rem] w-[20.5rem] sm:w-[29rem] rounded">
                 <img
-                  src={propsData.imageURL}
+                  src={images[0]}
                   alt=""
                   className="h-full object-cove"
                 />
@@ -111,9 +94,16 @@ const [tempBid, setTempBid] = React.useState("0")
                   <BiChevronUp />
                 </div>
                 <div className="flex md:flex-col gap-5 [&>*]:w-[4rem] [&>*]:h-[3rem] [&>*]:sm:w-[9rem] [&>*]:sm:h-[7rem] [&>*]:bg-slate-200 [&>*]:rounded [&>*:hover]:scale-110">
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                  {
+                    images.map((image: string)=>{
+                      return (
+                      <div>
+                        <img src={image} className="h-full object-cover"/>
+                      </div>
+                      )
+                    })
+                    
+                  }
                 </div>
                 <div className="text-3xl cursor-pointer text-blue-primary hover:scale-110 hidden md:block">
                   <BiChevronDown />

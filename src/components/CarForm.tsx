@@ -3,6 +3,7 @@ import { ImageIcon } from "../assets/icons/icons";
 import storage from "../firebaseConfig.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router";
+import { v4 } from "uuid";
 
 export default function CarForm() {
   const [name, setName] = useState("");
@@ -11,8 +12,8 @@ export default function CarForm() {
   const [fuelType, setFuelType] = useState("");
   const [mileage, setMileage] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage]: any = useState("");
-  const [imageURL, setImageURL] = useState("");
+  const [imageUpload, setImageUpload]: any = useState([]);
+  const [imageURL, setImageURL] = useState<string[]>([]);
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 
@@ -49,8 +50,8 @@ export default function CarForm() {
       setFuelType("");
       setMileage("");
       setPrice("");
-      setImage("");
-      setImageURL("");
+      setImageUpload("");
+      setImageURL([]);
       setDescription("");
       setError(null);
       alert("New Car Added You will be redirected to Cars Page");
@@ -60,36 +61,49 @@ export default function CarForm() {
     }
   };
 
-  const handleChangeFile = (event: any) => {
-    setImage(event.target.files[0]);
+  const handleChangeFile = (e: any) => {
 
-    // const file = document.getElementById("photos").files;
-    // const formData = new FormData();
-    // formData.append("img", file[0])
+    let pickedFile;
+    if(e.target.files && e.target.files.length > 0){
+      pickedFile = e.target.files;
+      setImageUpload(pickedFile);
+    }
+    
+
   };
 
+
+
+
+
   function handleUpload() {
-    if (!image) {
+    if (imageUpload.length  < 1) {
       alert("Please choose a file first!");
     }
-    const storageRef = ref(storage, `/files/${image}`);
-    const uploadTask = uploadBytesResumable(storageRef, image);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        ); // update progress
-        setPercent(percent);
-      },
-      (err) => console.log(err),
-      () => {
-        // download url
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {          
-          setImageURL(url);
-        });
-      }
-    );
+    if(imageUpload.length > 3){
+      alert("Please Select Maximum 3 images")
+    }
+
+    for(let i=0; i < 3; i++){
+      const storageRef = ref(storage, `/ikmotorImages/${imageUpload[i].name + v4()}`);
+      const uploadTask = uploadBytesResumable(storageRef, imageUpload[i]);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          ); // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {          
+            setImageURL((prevUrlList)=> [...prevUrlList, url]);
+          });
+        }
+      );
+    }
   }
 
   return (
@@ -107,6 +121,7 @@ export default function CarForm() {
             ></label>
             <input
               type="file"
+              multiple
               name="add-photos"
               id="photos"
               accept="image/*, video/*"

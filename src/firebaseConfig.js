@@ -16,4 +16,5 @@ const app = initializeApp(firebaseConfig);
 
 // Firebase storage reference
 const storage = getStorage(app);
+
 export default storage;
