@@ -1,4 +1,5 @@
 import React from "react"
+import { useNavigate } from "react-router"
 
 
 
@@ -6,10 +7,15 @@ import React from "react"
 export default function SignUpAndSignIn(){
 
 const [alreadyExist, setAlreadyExist] = React.useState<boolean>(false)
-
+const navigate = useNavigate()
 const handleAlreadyExist = () => {
     setAlreadyExist(!alreadyExist)
 }
+
+    const handleNavigation = ()=>{
+        navigate("/addcar")
+    }
+
     return(
         <div className="h-fit mb-10">
             <div className="w-[90%] sm:w-[50%] mx-auto">
@@ -26,7 +32,7 @@ const handleAlreadyExist = () => {
                             <input type="password" name="password" id="password" className="inputField" placeholder="Password"/>
                         </div>
 
-                        <button type="submit" className="btn bg-green-800 w-full mt-8 mb-4 text-white">Sign In</button>
+                        <button type="submit" className="btn bg-green-800 w-full mt-8 mb-4 text-white" onClick={handleNavigation}>Sign In</button>
                         <div className="text-xs flex flex-col items-end justify-end">
                             <h2 className="w-fit">Don't have an account?</h2>
                             <h2 className="text-orange-600 font-semibold cursor-pointer hover:underline w-fit" onClick={handleAlreadyExist}>Sign Up</h2>

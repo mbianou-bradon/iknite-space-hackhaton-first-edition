@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ImageIcon } from "../assets/icons/icons";
 import storage from "../firebaseConfig.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useNavigate } from "react-router";
 
 export default function CarForm() {
   const [name, setName] = useState("");
@@ -14,6 +15,8 @@ export default function CarForm() {
   const [imageURL, setImageURL] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
+
+  const navigator = useNavigate()
 
   const [percent, setPercent] = useState(0);
 
@@ -48,8 +51,9 @@ export default function CarForm() {
       setPrice("");
       setImage("");
       setError(null);
-      console.log("New Car Added", json);
+      alert("New Car Added You will be redirected to Cars Page");
       // dispatch({type: 'CREATE_CANDIDATE', payload: json })
+      navigator("/cars")
     }
   };
 
@@ -114,7 +118,7 @@ export default function CarForm() {
                 */
               }
             />
-            <span className="text-2xl block p-4 rounded-full bg-slate-200 text-emerald-800">
+            <span className="text-2xl block p-4 rounded-full bg-slate-200 text-green-primary">
               <ImageIcon />
             </span>
             <span className="text-xl text-slate-600 font-medium block pt-4">
@@ -126,7 +130,7 @@ export default function CarForm() {
             <input
               type="text"
               id="carName"
-              className="carName py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+              className="carName py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-primary"
               placeholder="Car Name"
               onChange={(e) => setName(e.target.value)}
             />
@@ -136,7 +140,7 @@ export default function CarForm() {
             <input
               type="text"
               id="model"
-              className="carModel py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+              className="carModel py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-primary"
               placeholder="Car Model"
               onChange={(e) => setModel(e.target.value)}
             />
@@ -146,7 +150,7 @@ export default function CarForm() {
             <input
               type="text"
               id="price"
-              className="price py-2 px-4 min-w-0 border w-full rounded-l-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+              className="price py-2 px-4 min-w-0 border w-full rounded-l-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-primary"
               placeholder="Price e.g. 15.000.000"
               onChange={(e) => setPrice(e.target.value)}
             />
@@ -159,7 +163,7 @@ export default function CarForm() {
             <input
               type="text"
               id="mileage"
-              className="price py-2 px-4 min-w-0 border w-full rounded-l-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+              className="price py-2 px-4 min-w-0 border w-full rounded-l-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-primary"
               placeholder="Mileage e.g. 15"
               onChange={(e) => setMileage(e.target.value)}
             />
@@ -173,7 +177,7 @@ export default function CarForm() {
             {/* <label htmlFor="fuelType">Fuel Type</label> */}
             <select
               id="category"
-              className="category py-2 px-4 mt-2 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+              className="category py-2 px-4 mt-2 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-primary"
               onChange={(e) => setFuelType(e.target.value)}
             >
               <option value="" className="font-slate-300">
@@ -191,7 +195,7 @@ export default function CarForm() {
             {/* <label htmlFor="engineType">Engine Type</label> */}
             <select
               id="engineType"
-              className="form-input category py-2 px-4 mt-2 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+              className="form-input category py-2 px-4 mt-2 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-primary"
               onChange={(e) => setEngineType(e.target.value)}
             >
               <option value="">Engine Type</option>
@@ -200,17 +204,12 @@ export default function CarForm() {
             </select>
           </div>
 
-          {/* <select id="category" className="form-input category py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400">
-                    <option value="">Availability</option>
-                    <option value="1">One Item</option>
-                    <option value="2">In Stock</option>
-    </select> */}
           <textarea
             name="description"
             id="desc"
             cols={30}
             rows={5}
-            className="form-input py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 resize-none"
+            className="form-input py-2 px-4 min-w-0 border w-full rounded-md hover:outline-one hover:border-gray-300 hover:outline-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-primary resize-none"
             placeholder="Write description here ..."
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
@@ -218,12 +217,12 @@ export default function CarForm() {
       </div>
       <div className="w-full flex flex-row flex-wrap justify-start md:justify-end text-slate-800 font-medium gap-4 py-4">
         <button
-          className="py-2 px-4 rounded-md bg-emerald-500 hover:bg-emerald-600 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 text-white font-bold transition-all duration-200 ease-linear drop-shadow-lg"
+          className="py-2 px-4 rounded-md bg-green-primary hover:bg-green-secondary focus:ring-2 focus:ring-blue-primary focus:ring-offset-2 text-white font-bold transition-all duration-200 ease-linear drop-shadow-lg"
           onClick={handleSubmit}
         >
           Add Car
         </button>
-        <button className="py-2 px-4 rounded-md bg-amber-500 hover:bg-amber-600 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 text-white font-bold transition-all duration-200 ease-linear drop-shadow-lg">
+        <button className="py-2 px-4 rounded-md bg-orange-secondary hover:bg-orange-secondary-light focus:ring-2 focus:ring-blue-primary focus:ring-offset-2 text-white font-bold transition-all duration-200 ease-linear drop-shadow-lg">
           Discard changes
         </button>
       </div>

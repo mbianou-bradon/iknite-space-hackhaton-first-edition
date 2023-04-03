@@ -24,9 +24,9 @@ export default function UpperNavbar() {
         "
       >
        <div>
-          <a href="#">
+          <Link to="/">
             <img src={logo_green} alt="" className="h-5"/>
-          </a>
+          </Link>
         </div>
        
          <svg

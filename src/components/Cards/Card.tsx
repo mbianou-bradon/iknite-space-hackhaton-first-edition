@@ -1,5 +1,6 @@
 import React from 'react'
-import { GrLocation } from "react-icons/gr"
+import { GoLocation } from "react-icons/go"
+import { BsSpeedometer2 } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import { Props } from '../../dataTypes'
 
@@ -25,15 +26,22 @@ export default function Card(prop:Props) {
               </div>
               <div className="flex items-baseline gap-2 my-auto">
                 <h2 className="text-sm">Price</h2>
-                <p className="text-xl font-bold"><span>{prop.price}</span> FCFA</p>
+                <p className="text-xl font-bold text-orange-primary"><span className="">{prop.price}</span>FCFA</p>
               </div>
-              <div>
-                  <div className="flex items-center gap-1 font-bold">
+              <div className="flex justify-between">
+                  <div className="flex items-baseline gap-1 font-bold text-xs">
                       {/* Location Icon */}
                       <div className="text-orange-primary">
-                          <GrLocation />
+                          <GoLocation/>
                       </div>
                       <h2>Douala</h2>
+                  </div>
+                  <div className="flex items-center gap-1 font-bold text-xs">
+                    {/* Mileage Icon */}
+                    <div>
+                      <BsSpeedometer2 color="#FD661F"/>
+                    </div>
+                    <h2>{prop.mileage} km/h</h2>
                   </div>
               </div>
             </div>

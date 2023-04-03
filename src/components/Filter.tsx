@@ -1,6 +1,10 @@
+import React from "react"
 import { BsSearch } from "react-icons/bs"
+import { Link } from "react-router-dom"
 
 export default function Filter(){
+
+    const [isAuth, setIsAuth] = React.useState<boolean>(false)
 
     return(
 
@@ -69,9 +73,12 @@ export default function Filter(){
                         <h2>Search</h2>
                     </div>
 
-                    <div className="btn border hover:bg-orange-primary text-white">
-                        <h2>Sell your Car</h2>
-                    </div>
+                    <Link to={isAuth? "/addcar":"/signup"}>
+                        <div className="btn border hover:bg-orange-primary text-white">
+                            <h2>Sell your Car</h2>
+                        </div>
+                    </Link>
+                    
                 </div>
             </div>
         </div>
